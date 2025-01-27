@@ -1,11 +1,15 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "@/layouts/Layout.astro";
+import App from "@/components/App.svelte";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Un PDF Con mucho que decir, PDF Talkie">
+  <main class="z-20 grid place-content-center min-h-screen w-screen">
+    <h1 class="text-6xl font-bold text-center pb-10">
+      Interroga todo lo que quieras a tu PDF
+    </h1>
+    <section class="container w-[1000px] mx-auto max-w-xl h-64">
+      <App client:idle />
+    </section>
+  </main>
 </Layout>
