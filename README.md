@@ -1,8 +1,26 @@
-# Astro Starter Kit: Basics
+# PDF Talker
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Este proyecto es una aplicación web construida con Astro que permite a los usuarios subir archivos PDF y procesarlos utilizando Cloudinary. La aplicación también utiliza Svelte para la interfaz de usuario y Tailwind CSS para el diseño.
+
+## 🚀 Comenzando
+
+Para comenzar con este proyecto, sigue los siguientes pasos:
+
+### Prerrequisitos
+
+Asegúrate de tener instalados los siguientes programas:
+
+- Node.js (versión 14 o superior)
+- pnpm (gestor de paquetes)
+
+### Instalación
+
+1. Clona el repositorio:
+
+   ```sh
+   git clone https://github.com/tu-usuario/pdf-talker.git
+   cd pdf-talker
+````
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
