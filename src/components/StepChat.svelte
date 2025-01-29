@@ -1,10 +1,11 @@
 <script>
-  import { appStatusInfo } from "@/store";
-  import { Input, Label, Spinner } from "flowbite-svelte";
+  import { appStatusInfo, setStatus } from "@/store";
+  import { Label, Spinner } from "flowbite-svelte";
 
   const { url, pages, id } = $appStatusInfo;
 
   let loading = false;
+  let answer = "";
 
   const numOfImagesToShow = Math.min(pages, 4);
   const images = Array.from({ length: numOfImagesToShow }, (_, i) => {
@@ -16,26 +17,31 @@
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    answer = "";
     loading = true;
     const question = event.target.question.value;
 
-    const res = await fetch("/api/ask", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id,
-        question,
-      }),
-    });
+    const searchParams = new URLSearchParams();
+    searchParams.append("id", id);
+    searchParams.append("question", question);
 
-    if (!res.ok) {
-      console.error("Error al preguntar");
-      return;
+    try {
+      const eventSource = new EventSource(
+        `/api/ask?${searchParams.toString()}`
+      );
+      loading = false;
+      const incomingData = JSON.parse(event.data);
+      if (incomingData === "__END__") {
+        eventSource.close();
+        return;
+      }
+      anser += incomingData;
+    } catch (e) {
+      setStatus("ERROR");
+      console.error(e);
+    } finally {
+      loading = false;
     }
-
-    const { answer } = await res.json();
   };
 </script>
 
@@ -66,6 +72,12 @@
   {#if loading}
     <div class="flex justify-center items-center flex-col gap-y-2">
       <Spinner color="purple" />
+    </div>
+  {/if}
+  {#if answer}
+    <div class="mt-8">
+      <p class="font-medium">GTP:</p>
+      <p>{answer}</p>
     </div>
   {/if}
 </div>

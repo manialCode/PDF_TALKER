@@ -16,6 +16,7 @@ export default defineConfig({
         access: "public",
       }),
       API_SECRET: envField.string({ context: "server", access: "secret" }),
+      OPENIA_KEY: envField.string({ context: "server", access: "secret" }),
     },
   },
 });
