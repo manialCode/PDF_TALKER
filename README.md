@@ -2,6 +2,10 @@
 
 Este proyecto es una aplicación web construida con Astro que permite a los usuarios subir archivos PDF y procesarlos utilizando Cloudinary. La aplicación también utiliza Svelte para la interfaz de usuario y Tailwind CSS para el diseño.
 
+## 📸 Capturas de pantalla
+
+![UI screenshot](./screenshots/{D5234055-FC20-465D-A117-F83C39828033}.png)
+
 ## 🚀 Comenzando
 
 Para comenzar con este proyecto, sigue los siguientes pasos:
